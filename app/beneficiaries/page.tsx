@@ -45,6 +45,50 @@ export default function BeneficiariesPage() {
       name: "Kasubo Wyntte",
       image: "/images/beneficiaries/KASUBO WYNTTE 1.jpeg",
     },
+    {
+      name: "Mirembe Nsoli",
+      image: "/images/beneficiaries/MIREMBE NSOLI 1.jpeg",
+    },
+    {
+      name: "Mudondo Evelyn",
+      image: "/images/beneficiaries/MUDONDO EVELYN 1.jpeg",
+    },
+    {
+      name: "Nabirye Rihanna",
+      image: "/images/beneficiaries/NABIRYE RIHANNA.jpeg",
+    },
+    {
+      name: "Naigaga Evelyn",
+      image: "/images/beneficiaries/NAIGAGA EVELYN.jpeg",
+    },
+    {
+      name: "Scovia Namunefu",
+      image: "/images/beneficiaries/SCOVIA NAMUNEFU 1.jpeg",
+    },
+    {
+      name: "Sharon Nadego",
+      image: "/images/beneficiaries/SHARON NADEGO.jpeg",
+    },
+    {
+      name: "Stecia Namunafu",
+      image: "/images/beneficiaries/STECIA NAMUNAFU.jpeg",
+    },
+    {
+      name: "Susan Ntibiri",
+      image: "/images/beneficiaries/SUSAN NTIBIRI 1.jpeg",
+    },
+    {
+      name: "Tepercia Namuwaya",
+      image: "/images/beneficiaries/TEPERCIA NAMUWAYA 1.jpeg",
+    },
+    {
+      name: "Tibasiima Viola",
+      image: "/images/beneficiaries/TIBASIIMA VIOLA 1.jpeg",
+    },
+    {
+      name: "Tukusewaya Benita",
+      image: "/images/beneficiaries/TUKUSEWAYA BENITA.jpeg",
+    },
   ]
 
   return (
@@ -55,7 +99,7 @@ export default function BeneficiariesPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: "url('/images/classroom-scene.jpg')",
+            backgroundImage: "url('/images/header/m2.jpg')",
           }}
         ></div>
 
@@ -171,7 +215,7 @@ export default function BeneficiariesPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-blue-600 rounded-2xl opacity-20 blur-xl"></div>
               <img
-                src="/images/happy-children.jpg"
+                src="/images/eeq.jpg"
                 alt="Community children"
                 className="relative rounded-2xl shadow-2xl w-full"
               />

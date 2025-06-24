@@ -13,7 +13,7 @@ const slides = [
     subtitle: "Through Education & Mentorship",
     description:
       "Supporting over 30 vulnerable girls in Luuka District with school fees, ensuring they stay in school and build brighter futures.",
-    image: "/images/classroom-scene.jpg",
+    image: "/images/headerImage/z101.jpg",
     cta: "Sponsor a Girl",
     ctaLink: "/donate",
     stats: { number: "30+", label: "Girls Sponsored" },
@@ -26,7 +26,7 @@ const slides = [
     subtitle: "One Woman at a Time",
     description:
       "Providing vocational training, life skills, and microenterprise support to empower women in rural Uganda.",
-    image: "/images/women-community.jpg",
+    image: "/images/headerImage/z20.jpg",
     cta: "Join Our Mission",
     ctaLink: "/programs",
     stats: { number: "100%", label: "Commitment to Change" },
@@ -39,7 +39,7 @@ const slides = [
     subtitle: "Transforming Loss into Hope",
     description:
       "Founded in memory of Andrew Kampani, our foundation ensures no child goes unheard and no woman is left behind.",
-    image: "/images/school-compound.jpg",
+    image: "/images/headerImage/z30.jpg",
     cta: "Our Story",
     ctaLink: "/about",
     stats: { number: "2025", label: "Legacy Continues" },
@@ -112,8 +112,8 @@ export default function HeroSlider() {
                 {/* Text Content */}
                 <div className="text-white space-y-8">
                   {/* Logo */}
-                  <div className="flex items-center space-x-3 animate-fade-in-up">
-                    <div className="relative w-16 h-16">
+                  <div className="flex items-center space-x-4 animate-fade-in-up">
+                    <div className="relative w-24 h-24">
                       <Image
                         src="/logo.png"
                         alt="Andrew Kampani Foundation Logo"
@@ -121,7 +121,7 @@ export default function HeroSlider() {
                         className="object-contain drop-shadow-lg"
                       />
                     </div>
-                    <div className="text-sm font-medium text-white/80">Andrew Kampani Foundation</div>
+                    <div className="text-lg font-medium text-white/80">Andrew Kampani Foundation</div>
                   </div>
 
                   {/* Main Content */}

@@ -13,7 +13,7 @@ export default function AboutPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-25"
           style={{
-            backgroundImage: "url('/images/school-compound.jpg')",
+            backgroundImage: "url('/images/headerImage/z101.jpg')",
           }}
         ></div>
 
@@ -94,7 +94,7 @@ export default function AboutPage() {
               <div className="absolute -inset-8 bg-gradient-to-r from-blue-500/10 to-teal-500/10 rounded-3xl blur-2xl"></div>
               <div className="relative bg-white rounded-3xl p-2 shadow-2xl">
                 <img
-                  src="/images/rural-homes.jpg"
+                  src="/images/01/zz.jpg"
                   alt="Community in Luuka District"
                   className="rounded-2xl w-full shadow-xl"
                 />
@@ -269,21 +269,21 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {[
               {
-                image: "/images/classroom-student.jpg",
+                image: "/images/community/y1.jpg",
                 title: "Education Focus",
                 description:
                   "Dedicated students in our supported classrooms, focused on learning and building their futures through quality education.",
                 stats: "30+ Students Supported",
               },
               {
-                image: "/images/happy-children.jpg",
+                image: "/images/community/y2.jpg",
                 title: "Community Children",
                 description:
                   "The bright smiles of children who represent the hope and potential of our community in Luuka District.",
                 stats: "100% Commitment",
               },
               {
-                image: "/images/girls-window.jpg",
+                image: "/images/community/y3.jpg",
                 title: "Curious Learners",
                 description:
                   "Young girls eager to learn and explore new opportunities through education and mentorship programs.",

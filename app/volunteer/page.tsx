@@ -48,7 +48,7 @@ export default function VolunteerPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: "url('/images/school-compound.jpg')",
+            backgroundImage: "url('/images/headerImage/z101.jpg')",
           }}
         ></div>
 
@@ -285,64 +285,6 @@ export default function VolunteerPage() {
               </form>
             </CardContent>
           </Card>
-        </div>
-      </section>
-
-      {/* Volunteer Stories */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">Volunteer Stories</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Hear from our volunteers about their transformative experiences and the impact they've made.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah Martinez",
-                role: "Field Volunteer, Kenya",
-                image: "/placeholder.svg?height=300&width=300",
-                quote:
-                  "Working with local communities taught me more than any classroom ever could. The resilience and hope I witnessed changed my perspective on life forever.",
-              },
-              {
-                name: "David Chen",
-                role: "Remote IT Support",
-                image: "/placeholder.svg?height=300&width=300",
-                quote:
-                  "Being able to use my technical skills to support education programs remotely has been incredibly fulfilling. Technology truly can bridge any distance.",
-              },
-              {
-                name: "Dr. Amara Johnson",
-                role: "Healthcare Volunteer, Uganda",
-                image: "/placeholder.svg?height=300&width=300",
-                quote:
-                  "Providing healthcare in underserved communities reminded me why I became a doctor. Every life we touch makes this work worthwhile.",
-              },
-            ].map((story, index) => (
-              <Card
-                key={index}
-                className="group border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={story.image || "/placeholder.svg"}
-                    alt={story.name}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <blockquote className="text-gray-600 italic leading-relaxed mb-4">"{story.quote}"</blockquote>
-                  <div>
-                    <h4 className="font-bold text-gray-900">{story.name}</h4>
-                    <p className="text-blue-600">{story.role}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </section>
 

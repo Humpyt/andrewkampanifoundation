@@ -14,7 +14,7 @@ export default function ContactPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: "url('/images/school-compound.jpg')",
+            backgroundImage: "url('/images/headerImage/z20.jpg')",
           }}
         ></div>
 
