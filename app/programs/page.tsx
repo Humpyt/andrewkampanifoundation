@@ -11,7 +11,7 @@ export default function ProgramsPage() {
       title: "Education Sponsorships",
       description:
         "Supporting over 30 vulnerable girls by paying their school fees (UGX 30,000 each), ensuring they stay in school and complete their education. This program is the cornerstone of our foundation's work.",
-      image: "/images/01/x1.jpg",
+      image: "/images/here/x1.jpg",
       gradient: "from-blue-500 to-teal-600",
       stats: ["30+ Girls Sponsored", "UGX 30,000 per child", "100% School Retention Goal"],
       features: [
@@ -28,7 +28,7 @@ export default function ProgramsPage() {
       title: "English Language Instruction",
       description:
         "Recruiting qualified English language instructors and literacy coaches to improve communication skills and educational outcomes for girls and women in our community.",
-      image: "/images/01/y1.jpg",
+      image: "/images/here/y1.jpg",
       gradient: "from-teal-500 to-green-600",
       stats: ["Teacher Recruitment Active", "Literacy Focus", "Communication Skills"],
       features: [
@@ -45,7 +45,7 @@ export default function ProgramsPage() {
       title: "Community Sensitization",
       description:
         "Organizing comprehensive education sessions on school retention, health awareness, and sexual education to combat early school dropout and empower informed decision-making.",
-      image: "/images/Our Community/x1.jpg",
+      image: "/images/here/x1.jpg",
       gradient: "from-green-500 to-emerald-600",
       stats: ["Community Workshops", "Health Education", "Dropout Prevention"],
       features: [
@@ -62,7 +62,7 @@ export default function ProgramsPage() {
       title: "Skills Training & Vocational Development",
       description:
         "Offering practical skills training including tailoring, crafts, and small-scale enterprise development to provide income-generating opportunities for women and older girls.",
-      image: "/images/01/x2.jpg",
+      image: "/images/here/x2.jpg",
       gradient: "from-emerald-500 to-cyan-600",
       stats: ["Tailoring Classes", "Craft Training", "Enterprise Support"],
       features: [
@@ -79,7 +79,7 @@ export default function ProgramsPage() {
       title: "Mentorship & Life Skills",
       description:
         "Providing comprehensive mentorship programs and life skills training to help girls and women develop confidence, leadership abilities, and make informed life decisions.",
-      image: "/images/01/y2.jpg",
+      image: "/images/here/y2.jpg",
       gradient: "from-cyan-500 to-blue-600",
       stats: ["Personal Mentorship", "Leadership Training", "Life Skills"],
       features: [
@@ -96,7 +96,7 @@ export default function ProgramsPage() {
       title: "Annual Legacy Visit",
       description:
         "Community gathering and outreach program inspired by the memory of Andrew Kampani, bringing together beneficiaries, supporters, and community members to celebrate progress and plan for the future.",
-      image: "/images/Our Community/x2.jpg",
+      image: "/images/here/x2.jpg",
       gradient: "from-blue-500 to-indigo-600",
       stats: ["Annual Event", "Community Gathering", "Legacy Celebration"],
       features: [
@@ -118,7 +118,7 @@ export default function ProgramsPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-25"
           style={{
-            backgroundImage: "url('/images/header/m2.jpg')",
+            backgroundImage: "url('/images/here/m2.jpg')",
           }}
         ></div>
 

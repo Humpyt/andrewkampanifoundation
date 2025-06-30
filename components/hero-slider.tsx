@@ -13,7 +13,7 @@ const slides = [
     subtitle: "Through Education & Mentorship",
     description:
       "Supporting over 30 vulnerable girls in Luuka District with school fees, ensuring they stay in school and build brighter futures.",
-    image: "/images/headerImage/z101.jpg",
+    image: "/images/here/z101.jpg",
     cta: "Sponsor a Girl",
     ctaLink: "/donate",
     stats: { number: "30+", label: "Girls Sponsored" },
@@ -26,7 +26,7 @@ const slides = [
     subtitle: "One Woman at a Time",
     description:
       "Providing vocational training, life skills, and microenterprise support to empower women in rural Uganda.",
-    image: "/images/headerImage/z20.jpg",
+    image: "/images/here/z20.jpg",
     cta: "Join Our Mission",
     ctaLink: "/programs",
     stats: { number: "100%", label: "Commitment to Change" },
@@ -39,7 +39,7 @@ const slides = [
     subtitle: "Transforming Loss into Hope",
     description:
       "Founded in memory of Andrew Kampani, our foundation ensures no child goes unheard and no woman is left behind.",
-    image: "/images/headerImage/z30.jpg",
+    image: "/images/here/z30.jpg",
     cta: "Our Story",
     ctaLink: "/about",
     stats: { number: "2025", label: "Legacy Continues" },

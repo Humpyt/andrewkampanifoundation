@@ -171,7 +171,7 @@ export default function HomePage() {
                 title: "Education Sponsorships",
                 description:
                   "Supporting over 30 vulnerable girls by paying their school fees (UGX 30,000 each), ensuring they stay in school and complete their education.",
-                image: "/images/headerImage/z101.jpg",
+                image: "/images/here/z101.jpg",
                 gradient: "from-purple-600 to-purple-700",
                 features: ["Direct fee payments", "Academic monitoring", "Mentorship support"],
                 delay: "0",
@@ -180,7 +180,7 @@ export default function HomePage() {
                 title: "Skills Training & Mentorship",
                 description:
                   "Providing practical skills like tailoring, crafts, and small-scale enterprise training, along with mentorship and life skills development.",
-                image: "/images/headerImage/z20.jpg",
+                image: "/images/here/z20.jpg",
                 gradient: "from-pink-600 to-rose-700",
                 features: ["Vocational training", "Life skills coaching", "Business mentorship"],
                 delay: "200",
@@ -189,7 +189,7 @@ export default function HomePage() {
                 title: "Community Sensitization",
                 description:
                   "Organizing school retention sessions, health education, and comprehensive sexual education to combat early school dropout.",
-                image: "/images/headerImage/z30.jpg",
+                image: "/images/here/z30.jpg",
                 gradient: "from-blue-600 to-indigo-700",
                 features: ["Health education", "Community workshops", "Awareness campaigns"],
                 delay: "400",
@@ -264,17 +264,17 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                image: "/images/Our Community/x1.jpg",
+                image: "/images/here/x1.jpg",
                 title: "Curious Minds",
                 description: "Young girls eager to learn and explore new opportunities through education.",
               },
               {
-                image: "/images/Our Community/x2.jpg",
+                image: "/images/here/x2.jpg",
                 title: "Rural Communities",
                 description: "Children in rural areas who need support to access quality education.",
               },
               {
-                image: "/images/Our Community/x3.jpg",
+                image: "/images/here/x3.jpg",
                 title: "Village Life",
                 description: "Families in Luuka District working together to build better futures.",
               },
