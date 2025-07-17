@@ -19,7 +19,7 @@ export default function Footer() {
             <div className="mb-6">
               <div className="relative w-24 h-24">
                 <Image
-                  src="/Andrew Kampani Foundation3.png"
+                  src="/andrew-kampani-logo-alt.png"
                   alt="Andrew Kampani Foundation Logo"
                   fill
                   className="object-contain"

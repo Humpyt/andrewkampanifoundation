@@ -37,7 +37,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="group">
             <div className="relative w-40 h-40 transition-transform duration-300 group-hover:scale-105">
-              <Image src="/images/logo/Andrew Kampani Foundation Logo copy-02.png" alt="Andrew Kampani Foundation Logo" fill className="object-contain" priority />
+              <Image src="/images/logo/andrew-kampani-logo.png" alt="Andrew Kampani Foundation Logo" fill className="object-contain" priority />
             </div>
           </Link>
 
