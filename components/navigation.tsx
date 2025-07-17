@@ -82,7 +82,7 @@ export default function Navigation() {
         <div
           className={`md:hidden overflow-hidden transition-all duration-300 ${
             isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
+          } pb-6`}
         >
           <div className="py-4 border-t border-gray-100">
             <div className="flex flex-col space-y-4">
@@ -97,17 +97,21 @@ export default function Navigation() {
                   {item.name}
                 </Link>
               ))}
-              <div className="flex flex-col space-y-2 pt-4 px-4">
-                <Button
-                  variant="outline"
-                  className="border-gray-300 text-gray-700 hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50"
-                >
-                  <Link href="/volunteer">Volunteer</Link>
-                </Button>
-                <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
-                  <Link href="/donate">Sponsor a Girl</Link>
-                </Button>
-              </div>
+              <div className="flex flex-row space-x-2 pt-4 px-4 pb-6">
+               <Link href="/volunteer" className="flex-1" onClick={() => setIsOpen(false)}>
+                 <Button
+                   variant="outline"
+                   className="w-full border-gray-300 text-gray-700 hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50"
+                 >
+                   Volunteer
+                 </Button>
+               </Link>
+               <Link href="/donate" className="flex-1" onClick={() => setIsOpen(false)}>
+                 <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                   Sponsor a Girl
+                 </Button>
+               </Link>
+             </div>
             </div>
           </div>
         </div>
