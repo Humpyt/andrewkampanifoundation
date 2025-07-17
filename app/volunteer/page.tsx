@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { sendEmail } from "@/lib/email"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -186,35 +187,72 @@ export default function VolunteerPage() {
 
           <Card className="p-8 border-0 shadow-2xl">
             <CardContent className="p-0">
-              <form className="space-y-6">
+              <form action={async (formData) => {
+                'use server'
+                const firstName = formData.get('firstName')
+                const lastName = formData.get('lastName')
+                const email = formData.get('email')
+                const phone = formData.get('phone')
+                const location = formData.get('location')
+                const opportunity = formData.get('opportunity')
+                const availability = formData.get('availability')
+                const experience = formData.get('experience')
+                const skills = formData.get('skills')
+                const motivation = formData.get('motivation')
+                
+                const emailContent = `
+                  New Volunteer Application:
+                  Name: ${firstName} ${lastName}
+                  Email: ${email}
+                  Phone: ${phone}
+                  Location: ${location}
+                  Preferred Opportunity: ${opportunity}
+                  Availability: ${availability}
+                  
+                  Experience:
+                  ${experience}
+                  
+                  Skills:
+                  ${skills}
+                  
+                  Motivation:
+                  ${motivation}
+                `
+                
+                await sendEmail(
+                  'ansmaris@yahoo.com',
+                  'New Volunteer Application',
+                  emailContent
+                )
+              }} className="space-y-6">
                 {/* Personal Information */}
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Personal Information</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                      <Input placeholder="Enter your first name" className="h-12" />
+                      <Input name="firstName" placeholder="Enter your first name" className="h-12" required />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                      <Input placeholder="Enter your last name" className="h-12" />
+                      <Input name="lastName" placeholder="Enter your last name" className="h-12" required />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                      <Input type="email" placeholder="Enter your email" className="h-12" />
+                      <Input name="email" type="email" placeholder="Enter your email" className="h-12" required />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                      <Input type="tel" placeholder="Enter your phone" className="h-12" />
+                      <Input name="phone" type="tel" placeholder="Enter your phone" className="h-12" required />
                     </div>
                   </div>
 
                   <div className="mt-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
-                    <Input placeholder="City, Country" className="h-12" />
+                    <Input name="location" placeholder="City, Country" className="h-12" required />
                   </div>
                 </div>
 
@@ -224,7 +262,7 @@ export default function VolunteerPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Opportunity</label>
-                      <select className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                      <select name="opportunity" className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         <option>Select an opportunity</option>
                         <option>Field Volunteer</option>
                         <option>Remote Support</option>
@@ -234,7 +272,7 @@ export default function VolunteerPage() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Availability</label>
-                      <select className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                      <select name="availability" className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         <option>Select availability</option>
                         <option>Full-time (40+ hours/week)</option>
                         <option>Part-time (20-40 hours/week)</option>
@@ -252,6 +290,7 @@ export default function VolunteerPage() {
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Relevant Experience</label>
                       <Textarea
+                        name="experience"
                         placeholder="Describe your relevant work, volunteer, or educational experience..."
                         className="min-h-32 resize-none"
                       />
@@ -259,6 +298,7 @@ export default function VolunteerPage() {
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Skills & Expertise</label>
                       <Textarea
+                        name="skills"
                         placeholder="List your key skills, languages, technical abilities, etc..."
                         className="min-h-32 resize-none"
                       />
@@ -268,6 +308,7 @@ export default function VolunteerPage() {
                         Why do you want to volunteer with us?
                       </label>
                       <Textarea
+                        name="motivation"
                         placeholder="Tell us about your motivation and what you hope to achieve..."
                         className="min-h-32 resize-none"
                       />
@@ -303,7 +344,7 @@ export default function VolunteerPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg"
+              className="border-white text-gray-800 hover:bg-white hover:text-gray-900 px-8 py-4 text-lg"
             >
               Learn More
             </Button>

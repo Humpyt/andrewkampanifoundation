@@ -30,7 +30,7 @@ export default function AboutPage() {
           <div className="flex items-center justify-center space-x-3 mb-8 animate-fade-in-up">
             <div className="relative w-16 h-16">
               <Image
-                src="/logo.png"
+                src="/Andrew Kampani Foundation3.png"
                 alt="Andrew Kampani Foundation Logo"
                 fill
                 className="object-contain drop-shadow-lg"
@@ -94,7 +94,7 @@ export default function AboutPage() {
               <div className="absolute -inset-8 bg-gradient-to-r from-blue-500/10 to-teal-500/10 rounded-3xl blur-2xl"></div>
               <div className="relative bg-white rounded-3xl p-2 shadow-2xl">
                 <img
-                  src="/images/01/zz.jpg"
+                  src="/images/Andrews Foundation.jpg"
                   alt="Community in Luuka District"
                   className="rounded-2xl w-full shadow-xl"
                 />
@@ -140,9 +140,7 @@ export default function AboutPage() {
                 <div className="relative pl-8">
                   <h3 className="text-2xl font-bold text-gray-800 mb-3">The Mission</h3>
                   <blockquote className="text-xl italic text-gray-700 leading-relaxed border-l-4 border-blue-300 pl-6 bg-blue-50/50 py-4 rounded-r-lg">
-                    "His death, though painful, opened my heart to a new purpose. This foundation stands as a legacy to
-                    Andrew's life and a commitment to ensure that no child goes unheard, no girl is left behind, and no
-                    woman is unsupported."
+                    "Empowering the Girl Child—Because Every Act of Love Puts a Smile"
                   </blockquote>
                 </div>
               </div>
@@ -194,7 +192,7 @@ export default function AboutPage() {
                 icon: Target,
                 title: "Our Mission",
                 content:
-                  "To support the education and personal development of vulnerable girls and women through access to quality education, mentorship, life skills training, and community empowerment initiatives.",
+                  "Empowering the Girl Child—Because Every Act of Love Puts a Smile",
                 gradient: "from-blue-500 to-teal-600",
                 delay: "0",
               },
@@ -276,7 +274,7 @@ export default function AboutPage() {
                 stats: "30+ Students Supported",
               },
               {
-                image: "/images/here/y2.jpg",
+                image: "/images/here/eeq.jpg",
                 title: "Community Children",
                 description:
                   "The bright smiles of children who represent the hope and potential of our community in Luuka District.",
@@ -594,7 +592,7 @@ export default function AboutPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-10 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+              className="border-2 border-white text-gray-800 hover:bg-white hover:text-gray-900 px-10 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
             >
               <Link href="/contact" className="flex items-center space-x-2">
                 <Users className="w-5 h-5" />

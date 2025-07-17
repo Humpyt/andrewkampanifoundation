@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { sendEmail } from "@/lib/email"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -85,31 +86,54 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-8">Send Us a Message</h2>
-              <form className="space-y-6">
+              <form action={async (formData) => {
+                'use server'
+                const firstName = formData.get('firstName')
+                const lastName = formData.get('lastName')
+                const email = formData.get('email')
+                const phone = formData.get('phone')
+                const interest = formData.get('interest')
+                const message = formData.get('message')
+                
+                const emailContent = `
+                  New Contact Form Submission:
+                  Name: ${firstName} ${lastName}
+                  Email: ${email}
+                  Phone: ${phone}
+                  Interest: ${interest}
+                  Message: ${message}
+                `
+                
+                await sendEmail(
+                  'ansmaris@yahoo.com',
+                  'New Contact Form Submission',
+                  emailContent
+                )
+              }} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                    <Input placeholder="Enter your first name" className="h-12" />
+                    <Input name="firstName" placeholder="Enter your first name" className="h-12" required />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                    <Input placeholder="Enter your last name" className="h-12" />
+                    <Input name="lastName" placeholder="Enter your last name" className="h-12" required />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                  <Input type="email" placeholder="Enter your email address" className="h-12" />
+                  <Input name="email" type="email" placeholder="Enter your email address" className="h-12" required />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                  <Input type="tel" placeholder="Enter your phone number" className="h-12" />
+                  <Input name="phone" type="tel" placeholder="Enter your phone number" className="h-12" required />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">I'm interested in:</label>
-                  <select className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                  <select name="interest" className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" required>
                     <option>Select your interest</option>
                     <option>Sponsoring a girl's education</option>
                     <option>Volunteering as a teacher</option>
@@ -121,7 +145,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <Textarea placeholder="Tell us more about your inquiry..." className="min-h-32 resize-none" />
+                  <Textarea name="message" placeholder="Tell us more about your inquiry..." className="min-h-32 resize-none" required />
                 </div>
 
                 <Button
@@ -272,7 +296,7 @@ export default function ContactPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 text-lg"
+              className="border-white text-gray-800 hover:bg-white hover:text-purple-900 px-8 py-4 text-lg"
             >
               <Link href="/donate">Sponsor a Girl</Link>
             </Button>

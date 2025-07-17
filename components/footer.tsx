@@ -16,13 +16,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Organization Info */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-3 mb-6 group">
-              <div className="relative w-12 h-12 transition-transform duration-300 group-hover:scale-105">
-                <Image src="/logo.png" alt="Andrew Kampani Foundation Logo" fill className="object-contain" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold">Andrew Kampani Foundation</span>
-                <span className="text-sm text-gray-300">Empowering Girls & Women Development</span>
+            <div className="mb-6">
+              <div className="relative w-24 h-24">
+                <Image
+                  src="/Andrew Kampani Foundation3.png"
+                  alt="Andrew Kampani Foundation Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
             </div>
             <p className="text-gray-300 leading-relaxed mb-6 max-w-md">
@@ -115,6 +117,9 @@ export default function Footer() {
             <div className="flex items-center space-x-2 mt-4 md:mt-0">
               <Heart className="w-4 h-4 text-red-400" />
               <p className="text-gray-400 text-sm">In loving memory of Andrew Kampani</p>
+            </div>
+            <div className="mt-4 text-center md:text-right">
+              <p className="text-gray-400 text-sm">Developed by <a href="https://cavemotions.com" target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-pink-300">Cave Motions</a></p>
             </div>
           </div>
         </div>

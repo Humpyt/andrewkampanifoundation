@@ -62,7 +62,7 @@ export default function ProgramsPage() {
       title: "Skills Training & Vocational Development",
       description:
         "Offering practical skills training including tailoring, crafts, and small-scale enterprise development to provide income-generating opportunities for women and older girls.",
-      image: "/images/here/x2.jpg",
+      image: "/images/Andrew Kampani Foundation2.jpeg",
       gradient: "from-emerald-500 to-cyan-600",
       stats: ["Tailoring Classes", "Craft Training", "Enterprise Support"],
       features: [
@@ -132,16 +132,16 @@ export default function ProgramsPage() {
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           {/* Logo */}
-          <div className="flex items-center justify-center space-x-3 mb-8 animate-fade-in-up">
-            <div className="relative w-16 h-16">
+          <div className="mb-8 animate-fade-in-up">
+            <div className="relative w-24 h-24 mx-auto">
               <Image
-                src="/logo.png"
+                src="/Andrew Kampani Foundation3.png"
                 alt="Andrew Kampani Foundation Logo"
                 fill
                 className="object-contain drop-shadow-lg"
+                priority
               />
             </div>
-            <div className="text-lg font-medium text-white/90">Andrew Kampani Foundation</div>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-white via-gray-100 to-slate-200 bg-clip-text text-transparent animate-fade-in-up delay-200">
@@ -549,7 +549,7 @@ export default function ProgramsPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-10 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+              className="border-2 border-white text-gray-800 hover:bg-white hover:text-gray-900 px-10 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
             >
               <Link href="/volunteer" className="flex items-center space-x-2">
                 <BookOpen className="w-5 h-5" />

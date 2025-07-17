@@ -174,6 +174,16 @@ export default function BeneficiariesPage() {
               </Card>
             ))}
           </div>
+
+          <div className="mt-12 text-center">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4 text-lg"
+            >
+              <Link href="/beneficiaries/all">View Complete List of Beneficiaries</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -215,12 +225,13 @@ export default function BeneficiariesPage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-blue-600 rounded-2xl opacity-20 blur-xl"></div>
               <img
-                src="/images/eeq.jpg"
-                alt="Community children"
-                className="relative rounded-2xl shadow-2xl w-full"
+                src="/images/women-community.jpg"
+                alt="Community women working together"
+                className="relative rounded-2xl shadow-2xl w-full object-cover h-full"
               />
             </div>
           </div>
+          
         </div>
       </section>
 
@@ -242,7 +253,7 @@ export default function BeneficiariesPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 text-lg"
+              className="border-white text-gray-800 hover:bg-white hover:text-purple-900 px-8 py-4 text-lg"
             >
               <Link href="/volunteer">Become a Volunteer</Link>
             </Button>

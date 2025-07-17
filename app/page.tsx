@@ -269,7 +269,7 @@ export default function HomePage() {
                 description: "Young girls eager to learn and explore new opportunities through education.",
               },
               {
-                image: "/images/here/x2.jpg",
+                image: "/images/Andrew Kampani Foundation2.jpeg",
                 title: "Rural Communities",
                 description: "Children in rural areas who need support to access quality education.",
               },
@@ -345,16 +345,16 @@ export default function HomePage() {
                   <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl"></div>
                   <div className="relative bg-white rounded-3xl p-8 shadow-xl">
                     <div className="text-center space-y-4">
-                      <div className="w-20 h-20 mx-auto">
+                      <div className="w-32 h-32 mx-auto">
                         <Image
-                          src="/logo.png"
+                          src="/images/logo/Andrew Kampani Foundation Logo copy-02.png"
                           alt="Andrew Kampani Foundation Logo"
-                          width={80}
-                          height={80}
+                          width={128}
+                          height={128}
                           className="object-contain"
                         />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-800">Andrew Kampani Foundation</h3>
+                      <h3 className="text-2xl font-bold text-gray-800">Andrew Kampani Foundation</h3>
                       <p className="text-gray-600">Empowering Girls & Women Development</p>
                       <div className="pt-4 border-t border-gray-200">
                         <p className="text-sm text-gray-500">Established 2025</p>
@@ -429,7 +429,7 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-10 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+              className="border-2 border-white text-gray-800 hover:bg-white hover:text-gray-900 px-10 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
             >
               <Link href="/volunteer" className="flex items-center space-x-2">
                 <Users className="w-5 h-5" />

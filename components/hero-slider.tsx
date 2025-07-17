@@ -111,18 +111,6 @@ export default function HeroSlider() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Text Content */}
                 <div className="text-white space-y-8">
-                  {/* Logo */}
-                  <div className="flex items-center space-x-4 animate-fade-in-up">
-                    <div className="relative w-24 h-24">
-                      <Image
-                        src="/logo.png"
-                        alt="Andrew Kampani Foundation Logo"
-                        fill
-                        className="object-contain drop-shadow-lg"
-                      />
-                    </div>
-                    <div className="text-lg font-medium text-white/80">Andrew Kampani Foundation</div>
-                  </div>
 
                   {/* Main Content */}
                   <div className="space-y-6">
@@ -163,7 +151,7 @@ export default function HeroSlider() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-1"
+                      className="border-2 border-white text-gray-900 hover:bg-white hover:text-gray-900 px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:-translate-y-1"
                     >
                       <Link href="/contact" className="flex items-center gap-2">
                         Get Involved

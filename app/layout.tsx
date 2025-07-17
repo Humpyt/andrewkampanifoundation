@@ -11,7 +11,10 @@ export const metadata: Metadata = {
   title: "Andrews Foundation - Empowering Girls and Women in Luuka District",
   description:
     "Andrews Foundation for Child and Women Development supports vulnerable girls and empowers women in Luuka District, Uganda through education sponsorships, skills training, and community programs. Founded in memory of Andrew Kampani.",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: "/images/logo/Andrew Kampani Foundation Logo copy-02.png"
+  }
 }
 
 export default function RootLayout({

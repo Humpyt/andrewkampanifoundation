@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button"
+import { sendEmail } from "@/lib/email"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Heart, Shield, Award, CreditCard, Smartphone, Building } from "lucide-react"
+import { DonationType } from "@/components/donation-type"
 
 export default function DonatePage() {
   const donationAmounts = [30000, 60000, 150000, 300000, 600000, 900000] // UGX amounts
@@ -105,18 +107,7 @@ export default function DonatePage() {
               <div className="mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Donation Type</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Button
-                    variant="outline"
-                    className="h-16 text-lg border-2 border-blue-200 hover:border-blue-500 hover:bg-blue-50"
-                  >
-                    💝 One-Time Donation
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-16 text-lg border-2 border-teal-200 hover:border-teal-500 hover:bg-teal-50"
-                  >
-                    🔄 Monthly Sponsorship
-                  </Button>
+                  <DonationType />
                 </div>
               </div>
 
@@ -130,13 +121,14 @@ export default function DonatePage() {
                       variant="outline"
                       className="h-16 text-lg font-bold border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600"
                     >
+                      <input type="hidden" name="amount" value={amount} />
                       {amount.toLocaleString()}
                     </Button>
                   ))}
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-lg font-medium text-gray-700">UGX</span>
-                  <Input placeholder="Enter custom amount" className="h-12 text-lg" type="number" />
+                  <Input name="amount" placeholder="Enter custom amount" className="h-12 text-lg" type="number" required />
                 </div>
               </div>
 
@@ -146,21 +138,21 @@ export default function DonatePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                    <Input placeholder="Enter your first name" className="h-12" />
+                    <Input name="firstName" placeholder="Enter your first name" className="h-12" required />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                    <Input placeholder="Enter your last name" className="h-12" />
+                    <Input name="lastName" placeholder="Enter your last name" className="h-12" required />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                    <Input type="email" placeholder="Enter your email" className="h-12" />
+                    <Input name="email" type="email" placeholder="Enter your email" className="h-12" required />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                    <Input type="tel" placeholder="Enter your phone" className="h-12" />
+                    <Input name="phone" type="tel" placeholder="Enter your phone" className="h-12" required />
                   </div>
                 </div>
               </div>
@@ -173,6 +165,7 @@ export default function DonatePage() {
                     variant="outline"
                     className="h-16 text-lg border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50"
                   >
+                    <input type="hidden" name="method" value="mobile-money" />
                     <CreditCard className="w-6 h-6 mr-2" />
                     Mobile Money
                   </Button>
@@ -180,6 +173,7 @@ export default function DonatePage() {
                     variant="outline"
                     className="h-16 text-lg border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50"
                   >
+                    <input type="hidden" name="method" value="bank-transfer" />
                     <Building className="w-6 h-6 mr-2" />
                     Bank Transfer
                   </Button>
@@ -187,6 +181,7 @@ export default function DonatePage() {
                     variant="outline"
                     className="h-16 text-lg border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50"
                   >
+                    <input type="hidden" name="method" value="airtel-mtn" />
                     <Smartphone className="w-6 h-6 mr-2" />
                     Airtel/MTN Money
                   </Button>
@@ -338,7 +333,7 @@ export default function DonatePage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg"
+              className="border-white text-gray-800 hover:bg-white hover:text-gray-900 px-8 py-4 text-lg"
             >
               Contact Orikiriza Stella
             </Button>

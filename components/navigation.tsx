@@ -35,15 +35,9 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative w-16 h-16 transition-transform duration-300 group-hover:scale-105">
-              <Image src="/logo.png" alt="Andrew Kampani Foundation Logo" fill className="object-contain" priority />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">
-                Andrew Kampani Foundation
-              </span>
-              <span className="text-sm text-gray-500 font-medium">Empowering Girls & Women</span>
+          <Link href="/" className="group">
+            <div className="relative w-40 h-40 transition-transform duration-300 group-hover:scale-105">
+              <Image src="/images/logo/Andrew Kampani Foundation Logo copy-02.png" alt="Andrew Kampani Foundation Logo" fill className="object-contain" priority />
             </div>
           </Link>
 
