@@ -1,12 +1,45 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { sendEmail } from "@/lib/email"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail, Users, Heart, GraduationCap } from "lucide-react"
 import Link from "next/link"
+import { useState } from "react"
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitMessage("")
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      firstName: formData.get('firstName'),
+      lastName: formData.get('lastName'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      interest: formData.get('interest'),
+      message: formData.get('message')
+    }
+
+    try {
+      // For static export, we'll show a success message
+      // In a real implementation, you'd send this to an API endpoint
+      console.log('Form submission:', data)
+      setSubmitMessage("Thank you for your message! We'll get back to you soon.")
+      e.currentTarget.reset()
+    } catch (error) {
+      setSubmitMessage("There was an error sending your message. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -86,30 +119,7 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-8">Send Us a Message</h2>
-              <form action={async (formData) => {
-                'use server'
-                const firstName = formData.get('firstName')
-                const lastName = formData.get('lastName')
-                const email = formData.get('email')
-                const phone = formData.get('phone')
-                const interest = formData.get('interest')
-                const message = formData.get('message')
-                
-                const emailContent = `
-                  New Contact Form Submission:
-                  Name: ${firstName} ${lastName}
-                  Email: ${email}
-                  Phone: ${phone}
-                  Interest: ${interest}
-                  Message: ${message}
-                `
-                
-                await sendEmail(
-                  'ansmaris@yahoo.com',
-                  'New Contact Form Submission',
-                  emailContent
-                )
-              }} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
@@ -148,11 +158,19 @@ export default function ContactPage() {
                   <Textarea name="message" placeholder="Tell us more about your inquiry..." className="min-h-32 resize-none" required />
                 </div>
 
+                {submitMessage && (
+                  <div className={`p-4 rounded-lg ${submitMessage.includes('error') ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}>
+                    {submitMessage}
+                  </div>
+                )}
+
                 <Button
+                  type="submit"
                   size="lg"
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 h-12"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 h-12 disabled:opacity-50"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </div>

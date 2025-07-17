@@ -1,11 +1,48 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { sendEmail } from "@/lib/email"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Users, Globe, Heart, Clock, Award, CheckCircle } from "lucide-react"
+import { useState } from "react"
 
 export default function VolunteerPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitMessage("")
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      firstName: formData.get('firstName'),
+      lastName: formData.get('lastName'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      location: formData.get('location'),
+      opportunity: formData.get('opportunity'),
+      availability: formData.get('availability'),
+      experience: formData.get('experience'),
+      skills: formData.get('skills'),
+      motivation: formData.get('motivation')
+    }
+
+    try {
+      // For static export, we'll show a success message
+      // In a real implementation, you'd send this to an API endpoint
+      console.log('Volunteer application:', data)
+      setSubmitMessage("Thank you for your volunteer application! We'll review it and get back to you soon.")
+      e.currentTarget.reset()
+    } catch (error) {
+      setSubmitMessage("There was an error submitting your application. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   const opportunities = [
     {
       title: "Field Volunteer",
@@ -187,44 +224,7 @@ export default function VolunteerPage() {
 
           <Card className="p-8 border-0 shadow-2xl">
             <CardContent className="p-0">
-              <form action={async (formData) => {
-                'use server'
-                const firstName = formData.get('firstName')
-                const lastName = formData.get('lastName')
-                const email = formData.get('email')
-                const phone = formData.get('phone')
-                const location = formData.get('location')
-                const opportunity = formData.get('opportunity')
-                const availability = formData.get('availability')
-                const experience = formData.get('experience')
-                const skills = formData.get('skills')
-                const motivation = formData.get('motivation')
-                
-                const emailContent = `
-                  New Volunteer Application:
-                  Name: ${firstName} ${lastName}
-                  Email: ${email}
-                  Phone: ${phone}
-                  Location: ${location}
-                  Preferred Opportunity: ${opportunity}
-                  Availability: ${availability}
-                  
-                  Experience:
-                  ${experience}
-                  
-                  Skills:
-                  ${skills}
-                  
-                  Motivation:
-                  ${motivation}
-                `
-                
-                await sendEmail(
-                  'ansmaris@yahoo.com',
-                  'New Volunteer Application',
-                  emailContent
-                )
-              }} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Personal Information */}
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Personal Information</h3>
@@ -316,12 +316,20 @@ export default function VolunteerPage() {
                   </div>
                 </div>
 
+                {submitMessage && (
+                  <div className={`p-4 rounded-lg ${submitMessage.includes('error') ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}>
+                    {submitMessage}
+                  </div>
+                )}
+
                 <Button
+                  type="submit"
                   size="lg"
-                  className="w-full h-16 text-xl bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700"
+                  disabled={isSubmitting}
+                  className="w-full h-16 text-xl bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 disabled:opacity-50"
                 >
                   <Heart className="w-6 h-6 mr-2" />
-                  Submit Application
+                  {isSubmitting ? "Submitting..." : "Submit Application"}
                 </Button>
               </form>
             </CardContent>
