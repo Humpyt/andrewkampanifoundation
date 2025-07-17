@@ -135,7 +135,7 @@ export default function ProgramsPage() {
           <div className="mb-8 animate-fade-in-up">
             <div className="relative w-24 h-24 mx-auto">
               <Image
-                src="/Andrew Kampani Foundation3.png"
+                src="/images/logo/andrew-kampani-logo.png"
                 alt="Andrew Kampani Foundation Logo"
                 fill
                 className="object-contain drop-shadow-lg"

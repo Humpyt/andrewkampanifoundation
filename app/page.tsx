@@ -347,7 +347,7 @@ export default function HomePage() {
                     <div className="text-center space-y-4">
                       <div className="w-32 h-32 mx-auto">
                         <Image
-                          src="/images/logo/Andrew Kampani Foundation Logo copy-02.png"
+                          src="/images/logo/andrew-kampani-logo.png"
                           alt="Andrew Kampani Foundation Logo"
                           width={128}
                           height={128}

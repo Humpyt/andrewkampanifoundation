@@ -30,7 +30,7 @@ export default function AboutPage() {
           <div className="flex items-center justify-center space-x-3 mb-8 animate-fade-in-up">
             <div className="relative w-16 h-16">
               <Image
-                src="/Andrew Kampani Foundation3.png"
+                src="/images/logo/andrew-kampani-logo.png"
                 alt="Andrew Kampani Foundation Logo"
                 fill
                 className="object-contain drop-shadow-lg"
