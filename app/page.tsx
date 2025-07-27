@@ -171,8 +171,8 @@ export default function HomePage() {
                 title: "Education Sponsorships",
                 description:
                   "Supporting over 30 vulnerable girls by paying their school fees (UGX 30,000 each), ensuring they stay in school and complete their education.",
-                image: "/images/here/z101.jpg",
-                gradient: "from-purple-600 to-purple-700",
+                image: "/images/CorePrograms/Andrews02.jpg",
+                gradient: "from-purple-400 to-purple-500",
                 features: ["Direct fee payments", "Academic monitoring", "Mentorship support"],
                 delay: "0",
               },
@@ -180,8 +180,8 @@ export default function HomePage() {
                 title: "Skills Training & Mentorship",
                 description:
                   "Providing practical skills like tailoring, crafts, and small-scale enterprise training, along with mentorship and life skills development.",
-                image: "/images/here/z20.jpg",
-                gradient: "from-pink-600 to-rose-700",
+                image: "/images/CorePrograms/Andrews05.jpeg",
+                gradient: "from-pink-400 to-rose-500",
                 features: ["Vocational training", "Life skills coaching", "Business mentorship"],
                 delay: "200",
               },
@@ -189,8 +189,8 @@ export default function HomePage() {
                 title: "Community Sensitization",
                 description:
                   "Organizing school retention sessions, health education, and comprehensive sexual education to combat early school dropout.",
-                image: "/images/here/z30.jpg",
-                gradient: "from-blue-600 to-indigo-700",
+                image: "/images/CorePrograms/Andrews07.jpeg",
+                gradient: "from-blue-400 to-indigo-500",
                 features: ["Health education", "Community workshops", "Awareness campaigns"],
                 delay: "400",
               },
@@ -206,7 +206,7 @@ export default function HomePage() {
                     alt={program.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${program.gradient} opacity-90`}></div>
+                  <div className="absolute inset-0 bg-black/20"></div>
                   <div className="absolute inset-0 bg-black/20"></div>
 
                   {/* Floating Elements */}

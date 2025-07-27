@@ -117,31 +117,49 @@ export default function AboutPage() {
                 </span>
               </h2>
 
-              <div className="space-y-8">
-                <div className="relative pl-8 border-l-4 border-gradient-to-b from-blue-500 to-teal-500">
-                  <div className="absolute -left-3 top-0 w-6 h-6 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full"></div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">The Beginning</h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    <strong className="text-blue-600">Orikiriza Stella</strong> established the Andrew Kampani
-                    Foundation in 2025, born from profound personal loss and an unexpected awakening to the struggles of
-                    rural Uganda.
-                  </p>
+              <div className="space-y-12">
+                {/* Timeline Item 1 */}
+                <div className="relative pl-12">
+                  <div className="absolute left-0 top-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                    1
+                  </div>
+                  <div className="absolute left-4 top-8 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-teal-500"></div>
+                  <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 className="text-3xl font-bold text-gray-800 mb-4">The Beginning</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      <strong className="text-blue-600">Orikiriza Stella</strong> established the Andrew Kampani
+                      Foundation in 2025, born from profound personal loss and an unexpected awakening to the struggles of
+                      rural Uganda.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="relative pl-8 border-l-4 border-gradient-to-b from-teal-500 to-green-500">
-                  <div className="absolute -left-3 top-0 w-6 h-6 bg-gradient-to-r from-teal-500 to-green-500 rounded-full"></div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">The Discovery</h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    Annual visits to Andrew's resting place in Luuka revealed a community where children couldn't
-                    respond to simple greetings—a stark reminder of educational gaps that needed urgent attention.
-                  </p>
+                {/* Timeline Item 2 */}
+                <div className="relative pl-12">
+                  <div className="absolute left-0 top-0 w-8 h-8 bg-gradient-to-r from-teal-500 to-green-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                    2
+                  </div>
+                  <div className="absolute left-4 top-8 bottom-0 w-1 bg-gradient-to-b from-teal-500 to-green-500"></div>
+                  <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 className="text-3xl font-bold text-gray-800 mb-4">The Discovery</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Annual visits to Andrew's resting place in Luuka revealed a community where children couldn't
+                      respond to simple greetings—a stark reminder of educational gaps that needed urgent attention.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="relative pl-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">The Mission</h3>
-                  <blockquote className="text-xl italic text-gray-700 leading-relaxed border-l-4 border-blue-300 pl-6 bg-blue-50/50 py-4 rounded-r-lg">
-                    "Empowering the Girl Child—Because Every Act of Love Puts a Smile"
-                  </blockquote>
+                {/* Timeline Item 3 */}
+                <div className="relative pl-12">
+                  <div className="absolute left-0 top-0 w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                    3
+                  </div>
+                  <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 className="text-3xl font-bold text-gray-800 mb-4">The Mission</h3>
+                    <blockquote className="text-2xl italic text-gray-700 leading-relaxed p-6 bg-gradient-to-r from-blue-50 to-teal-50 rounded-xl border-l-4 border-blue-400">
+                      "Empowering the Girl Child—Because Every Act of Love Puts a Smile"
+                    </blockquote>
+                  </div>
                 </div>
               </div>
 

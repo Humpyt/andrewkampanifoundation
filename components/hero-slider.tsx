@@ -17,7 +17,7 @@ const slides = [
     cta: "Sponsor a Girl",
     ctaLink: "/donate",
     stats: { number: "30+", label: "Girls Sponsored" },
-    gradient: "from-purple-900/90 via-purple-800/80 to-pink-900/90",
+    gradient: "from-purple-600/70 via-purple-500/60 to-pink-600/70",
     accent: "purple",
   },
   {
@@ -30,7 +30,7 @@ const slides = [
     cta: "Join Our Mission",
     ctaLink: "/programs",
     stats: { number: "100%", label: "Commitment to Change" },
-    gradient: "from-pink-900/90 via-rose-800/80 to-orange-900/90",
+    gradient: "from-pink-600/70 via-rose-500/60 to-orange-600/70",
     accent: "pink",
   },
   {
@@ -43,7 +43,7 @@ const slides = [
     cta: "Our Story",
     ctaLink: "/about",
     stats: { number: "2025", label: "Legacy Continues" },
-    gradient: "from-blue-900/90 via-indigo-800/80 to-purple-900/90",
+    gradient: "from-blue-600/70 via-indigo-500/60 to-purple-600/70",
     accent: "blue",
   },
 ]
