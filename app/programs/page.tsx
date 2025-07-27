@@ -11,7 +11,7 @@ export default function ProgramsPage() {
       title: "Education Sponsorships",
       description:
         "Supporting over 30 vulnerable girls by paying their school fees (UGX 30,000 each), ensuring they stay in school and complete their education. This program is the cornerstone of our foundation's work.",
-      image: "/images/Andrews02.jpg",
+      image: "/images/CorePrograms/Andrews02.jpg",
       gradient: "from-blue-500 to-teal-600",
       stats: ["30+ Girls Sponsored", "UGX 30,000 per child", "100% School Retention Goal"],
       features: [
