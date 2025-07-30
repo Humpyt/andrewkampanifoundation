@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Andrews Foundation for Child and Women Development supports vulnerable girls and empowers women in Luuka District, Uganda through education sponsorships, skills training, and community programs. Founded in memory of Andrew Kampani.",
   generator: 'v0.dev',
   icons: {
-    icon: "/images/logo/andrew-kampani-logo.png"
+    icon: "/favicon.ico"
   }
 }
 
@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased" suppressHydrationWarning={true}>
         <Navigation />
         <main className="pt-20">{children}</main>
         <Footer />

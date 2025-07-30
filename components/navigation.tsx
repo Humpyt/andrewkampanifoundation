@@ -32,17 +32,17 @@ export default function Navigation() {
         scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/90 backdrop-blur-sm"
       } border-b border-gray-100`}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-6" suppressHydrationWarning={true}>
+        <div className="flex items-center justify-between h-20" suppressHydrationWarning={true}>
           {/* Logo */}
           <Link href="/" className="group">
-            <div className="relative w-40 h-40 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative w-40 h-40 transition-transform duration-300 group-hover:scale-105" suppressHydrationWarning={true}>
               <Image src="/images/logo/andrew-kampani-logo.png" alt="Andrew Kampani Foundation Logo" fill className="object-contain" priority />
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8" suppressHydrationWarning={true}>
             {navItems.map((item, index) => (
               <Link
                 key={item.name}

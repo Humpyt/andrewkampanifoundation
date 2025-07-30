@@ -1,12 +1,95 @@
+"use client"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { sendEmail } from "@/lib/email"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Heart, Shield, Award, CreditCard, Smartphone, Building } from "lucide-react"
-import { DonationType } from "@/components/donation-type"
 
 export default function DonatePage() {
+  const [selectedDonationType, setSelectedDonationType] = useState<string>('')
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(null)
+  const [customAmount, setCustomAmount] = useState<string>('')
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('')
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
   const donationAmounts = [30000, 60000, 150000, 300000, 600000, 900000] // UGX amounts
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitMessage('')
+
+    // Validate form
+    if (!selectedDonationType) {
+      setSubmitMessage('Please select a donation type')
+      setIsSubmitting(false)
+      return
+    }
+
+    const finalAmount = selectedAmount ? selectedAmount.toString() : customAmount
+    if (!finalAmount) {
+      setSubmitMessage('Please select or enter a donation amount')
+      setIsSubmitting(false)
+      return
+    }
+
+    if (!selectedPaymentMethod) {
+      setSubmitMessage('Please select a payment method')
+      setIsSubmitting(false)
+      return
+    }
+
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
+      setSubmitMessage('Please fill in all personal information fields')
+      setIsSubmitting(false)
+      return
+    }
+
+    try {
+      const response = await fetch('/api/donate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          donationType: selectedDonationType,
+          amount: finalAmount,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          paymentMethod: selectedPaymentMethod,
+        }),
+      })
+
+      if (response.ok) {
+        setSubmitMessage('Thank you! Your donation submission has been sent successfully. We will contact you shortly with payment instructions.')
+        // Reset form
+        setSelectedDonationType('')
+        setSelectedAmount(null)
+        setCustomAmount('')
+        setSelectedPaymentMethod('')
+        setFormData({ firstName: '', lastName: '', email: '', phone: '' })
+      } else {
+        setSubmitMessage('There was an error submitting your donation. Please try again.')
+      }
+    } catch (error) {
+      setSubmitMessage('There was an error submitting your donation. Please try again.')
+    }
+
+    setIsSubmitting(false)
+  }
 
   const impactLevels = [
     {
@@ -103,11 +186,35 @@ export default function DonatePage() {
 
           <Card className="p-8 border-0 shadow-2xl">
             <CardContent className="p-0">
+              <form onSubmit={handleSubmit}>
               {/* Donation Type */}
               <div className="mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Donation Type</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <DonationType />
+                  <Button
+                    type="button"
+                    variant={selectedDonationType === 'one-time' ? 'default' : 'outline'}
+                    className={`h-16 text-lg border-2 ${
+                      selectedDonationType === 'one-time'
+                        ? 'bg-blue-500 text-white border-blue-500'
+                        : 'border-blue-200 hover:border-blue-500 hover:bg-blue-50'
+                    }`}
+                    onClick={() => setSelectedDonationType('one-time')}
+                  >
+                    💝 One-Time Donation
+                  </Button>
+                  <Button
+                    type="button"
+                    variant={selectedDonationType === 'monthly' ? 'default' : 'outline'}
+                    className={`h-16 text-lg border-2 ${
+                      selectedDonationType === 'monthly'
+                        ? 'bg-teal-500 text-white border-teal-500'
+                        : 'border-teal-200 hover:border-teal-500 hover:bg-teal-50'
+                    }`}
+                    onClick={() => setSelectedDonationType('monthly')}
+                  >
+                    🔄 Monthly Sponsorship
+                  </Button>
                 </div>
               </div>
 
@@ -118,17 +225,34 @@ export default function DonatePage() {
                   {donationAmounts.map((amount) => (
                     <Button
                       key={amount}
-                      variant="outline"
-                      className="h-16 text-lg font-bold border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600"
+                      type="button"
+                      variant={selectedAmount === amount ? 'default' : 'outline'}
+                      className={`h-16 text-lg font-bold border-2 ${
+                        selectedAmount === amount
+                          ? 'bg-blue-500 text-white border-blue-500'
+                          : 'border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600'
+                      }`}
+                      onClick={() => {
+                        setSelectedAmount(amount)
+                        setCustomAmount('')
+                      }}
                     >
-                      <input type="hidden" name="amount" value={amount} />
-                      {amount.toLocaleString()}
+                      {amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                     </Button>
                   ))}
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-lg font-medium text-gray-700">UGX</span>
-                  <Input name="amount" placeholder="Enter custom amount" className="h-12 text-lg" type="number" required />
+                  <Input
+                    value={customAmount}
+                    onChange={(e) => {
+                      setCustomAmount(e.target.value)
+                      setSelectedAmount(null)
+                    }}
+                    placeholder="Enter custom amount"
+                    className="h-12 text-lg"
+                    type="number"
+                  />
                 </div>
               </div>
 
@@ -138,21 +262,47 @@ export default function DonatePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                    <Input name="firstName" placeholder="Enter your first name" className="h-12" required />
+                    <Input
+                      value={formData.firstName}
+                      onChange={(e) => handleInputChange('firstName', e.target.value)}
+                      placeholder="Enter your first name"
+                      className="h-12"
+                      required
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                    <Input name="lastName" placeholder="Enter your last name" className="h-12" required />
+                    <Input
+                      value={formData.lastName}
+                      onChange={(e) => handleInputChange('lastName', e.target.value)}
+                      placeholder="Enter your last name"
+                      className="h-12"
+                      required
+                    />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                    <Input name="email" type="email" placeholder="Enter your email" className="h-12" required />
+                    <Input
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      type="email"
+                      placeholder="Enter your email"
+                      className="h-12"
+                      required
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                    <Input name="phone" type="tel" placeholder="Enter your phone" className="h-12" required />
+                    <Input
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      type="tel"
+                      placeholder="Enter your phone"
+                      className="h-12"
+                      required
+                    />
                   </div>
                 </div>
               </div>
@@ -162,40 +312,69 @@ export default function DonatePage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Payment Method</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <Button
-                    variant="outline"
-                    className="h-16 text-lg border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50"
+                    type="button"
+                    variant={selectedPaymentMethod === 'visa-mastercard' ? 'default' : 'outline'}
+                    className={`h-16 text-lg border-2 ${
+                      selectedPaymentMethod === 'visa-mastercard'
+                        ? 'bg-blue-500 text-white border-blue-500'
+                        : 'border-gray-200 hover:border-blue-500 hover:bg-blue-50'
+                    }`}
+                    onClick={() => setSelectedPaymentMethod('visa-mastercard')}
                   >
-                    <input type="hidden" name="method" value="mobile-money" />
                     <CreditCard className="w-6 h-6 mr-2" />
-                    Mobile Money
+                    Visa/Mastercard
                   </Button>
                   <Button
-                    variant="outline"
-                    className="h-16 text-lg border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50"
+                    type="button"
+                    variant={selectedPaymentMethod === 'bank-transfer' ? 'default' : 'outline'}
+                    className={`h-16 text-lg border-2 ${
+                      selectedPaymentMethod === 'bank-transfer'
+                        ? 'bg-blue-500 text-white border-blue-500'
+                        : 'border-gray-200 hover:border-blue-500 hover:bg-blue-50'
+                    }`}
+                    onClick={() => setSelectedPaymentMethod('bank-transfer')}
                   >
-                    <input type="hidden" name="method" value="bank-transfer" />
                     <Building className="w-6 h-6 mr-2" />
                     Bank Transfer
                   </Button>
                   <Button
-                    variant="outline"
-                    className="h-16 text-lg border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50"
+                    type="button"
+                    variant={selectedPaymentMethod === 'airtel-mtn' ? 'default' : 'outline'}
+                    className={`h-16 text-lg border-2 ${
+                      selectedPaymentMethod === 'airtel-mtn'
+                        ? 'bg-blue-500 text-white border-blue-500'
+                        : 'border-gray-200 hover:border-blue-500 hover:bg-blue-50'
+                    }`}
+                    onClick={() => setSelectedPaymentMethod('airtel-mtn')}
                   >
-                    <input type="hidden" name="method" value="airtel-mtn" />
                     <Smartphone className="w-6 h-6 mr-2" />
                     Airtel/MTN Money
                   </Button>
                 </div>
               </div>
 
-              {/* Donation Button */}
-              <Button
-                size="lg"
-                className="w-full h-16 text-xl bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600"
-              >
-                <Heart className="w-6 h-6 mr-2" />
-                Complete Donation
-              </Button>
+                {/* Submit Message */}
+                {submitMessage && (
+                  <div className={`mb-6 p-4 rounded-lg ${
+                    submitMessage.includes('successfully') 
+                      ? 'bg-green-50 text-green-800 border border-green-200'
+                      : 'bg-red-50 text-red-800 border border-red-200'
+                  }`}>
+                    {submitMessage}
+                  </div>
+                )}
+
+                {/* Donation Button */}
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={isSubmitting}
+                  className="w-full h-16 text-xl bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 disabled:opacity-50"
+                >
+                  <Heart className="w-6 h-6 mr-2" />
+                  {isSubmitting ? 'Submitting...' : 'Complete Donation'}
+                </Button>
+              </form>
             </CardContent>
           </Card>
         </div>

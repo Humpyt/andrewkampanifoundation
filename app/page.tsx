@@ -352,6 +352,7 @@ export default function HomePage() {
                           width={128}
                           height={128}
                           className="object-contain"
+                          priority
                         />
                       </div>
                       <h3 className="text-2xl font-bold text-gray-800">Andrew Kampani Foundation</h3>
