@@ -119,7 +119,10 @@ export default function Footer() {
               <p className="text-gray-400 text-sm">In loving memory of Andrew Kampani</p>
             </div>
             <div className="mt-4 text-center md:text-right">
-              <p className="text-gray-400 text-xs">Developed by <a href="https://cavemotions.com" target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-pink-300">Cave Motions</a></p>
+              <p className="text-gray-400 text-xs">
+                Developed by <a href="https://cavemotions.com" target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-pink-300">Cave Motions</a> |
+                <a href="https://premium307.web-hosting.com:2096/" target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-pink-300 ml-1">Webmail</a>
+              </p>
             </div>
           </div>
         </div>

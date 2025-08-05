@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sendDonationEmail } from '@/lib/email'
+import { saveDonation } from '../../../lib/storage'
+import { sendDonationEmail } from '../../../lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,24 +17,44 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Send email
-    const result = await sendDonationEmail(data)
-    
-    if (result.success) {
-      return NextResponse.json(
-        { message: 'Donation submission sent successfully' },
-        { status: 200 }
-      )
-    } else {
-      return NextResponse.json(
-        { error: 'Failed to send donation submission' },
-        { status: 500 }
-      )
+    // Save donation first (durable storage recommended in production)
+    const donationData = {
+      donationType: data.donationType,
+      amount: data.amount,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      paymentMethod: data.paymentMethod,
+      timestamp: new Date().toISOString()
     }
+
+    await saveDonation(donationData)
+
+    // Send email via hosting SMTP (server-only, env-configured)
+    const emailResult = await sendDonationEmail({
+      donationType: data.donationType,
+      amount: data.amount,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      paymentMethod: data.paymentMethod
+    })
+
+    const success = !!emailResult?.success
+
+    return NextResponse.json({
+      success,
+      message: success ? 'Donation submitted and email sent' : 'Donation submitted but email failed',
+      emailDelivery: emailResult,
+      adminUrl: '/admin/donations'
+    }, { status: success ? 200 : 502 })
+
   } catch (error) {
-    console.error('API error:', error)
+    console.error('Donation submission error:', error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Failed to process donation' },
       { status: 500 }
     )
   }

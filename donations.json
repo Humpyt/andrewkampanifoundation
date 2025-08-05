@@ -1,0 +1,34 @@
+[
+  {
+    "donationType": "one-time",
+    "amount": "60000",
+    "firstName": "Todo",
+    "lastName": "Humphrey",
+    "email": "2humpyt@gmail.com",
+    "phone": "0787022105",
+    "paymentMethod": "visa-mastercard",
+    "id": "1754399618010",
+    "timestamp": "2025-08-05T13:13:38.010Z"
+  },
+  {
+    "donationType": "monthly",
+    "amount": "150000",
+    "firstName": "Todo",
+    "lastName": "Humphrey",
+    "email": "2humpyt@gmail.com",
+    "phone": "0787022105",
+    "paymentMethod": "bank-transfer",
+    "id": "1754399634807",
+    "timestamp": "2025-08-05T13:13:54.807Z"
+  },
+  {
+    "donationType": "one-time",
+    "amount": "600000",
+    "firstName": "Opio",
+    "lastName": "Humphrey",
+    "email": "2humpyt@gmail.com",
+    "phone": "0787022105",
+    "paymentMethod": "bank-transfer",
+    "timestamp": "2025-08-05T14:01:52.471Z"
+  }
+]
