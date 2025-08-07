@@ -2,46 +2,9 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Users, Globe, Heart, Clock, Award, CheckCircle } from "lucide-react"
-import { useState } from "react"
 
 export default function VolunteerPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState("")
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitMessage("")
-
-    const formData = new FormData(e.currentTarget)
-    const data = {
-      firstName: formData.get('firstName'),
-      lastName: formData.get('lastName'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      location: formData.get('location'),
-      opportunity: formData.get('opportunity'),
-      availability: formData.get('availability'),
-      experience: formData.get('experience'),
-      skills: formData.get('skills'),
-      motivation: formData.get('motivation')
-    }
-
-    try {
-      // For static export, we'll show a success message
-      // In a real implementation, you'd send this to an API endpoint
-      console.log('Volunteer application:', data)
-      setSubmitMessage("Thank you for your volunteer application! We'll review it and get back to you soon.")
-      e.currentTarget.reset()
-    } catch (error) {
-      setSubmitMessage("There was an error submitting your application. Please try again.")
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   const opportunities = [
     {
@@ -202,9 +165,7 @@ export default function VolunteerPage() {
                     </ul>
                   </div>
 
-                  <Button className={`w-full bg-gradient-to-r ${opportunity.gradient} hover:opacity-90`}>
-                    Apply for This Position
-                  </Button>
+
                 </CardContent>
               </Card>
             ))}
@@ -212,130 +173,7 @@ export default function VolunteerPage() {
         </div>
       </section>
 
-      {/* Application Form */}
-      <section className="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">Apply to Volunteer</h2>
-            <p className="text-xl text-gray-600">
-              Ready to make a difference? Fill out our application form and we'll get back to you soon.
-            </p>
-          </div>
 
-          <Card className="p-8 border-0 shadow-2xl">
-            <CardContent className="p-0">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Information */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Personal Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                      <Input name="firstName" placeholder="Enter your first name" className="h-12" required />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                      <Input name="lastName" placeholder="Enter your last name" className="h-12" required />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                      <Input name="email" type="email" placeholder="Enter your email" className="h-12" required />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                      <Input name="phone" type="tel" placeholder="Enter your phone" className="h-12" required />
-                    </div>
-                  </div>
-
-                  <div className="mt-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
-                    <Input name="location" placeholder="City, Country" className="h-12" required />
-                  </div>
-                </div>
-
-                {/* Volunteer Preferences */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Volunteer Preferences</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Opportunity</label>
-                      <select name="opportunity" className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        <option>Select an opportunity</option>
-                        <option>Field Volunteer</option>
-                        <option>Remote Support</option>
-                        <option>Skills-Based Volunteer</option>
-                        <option>Event Support</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Availability</label>
-                      <select name="availability" className="w-full h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        <option>Select availability</option>
-                        <option>Full-time (40+ hours/week)</option>
-                        <option>Part-time (20-40 hours/week)</option>
-                        <option>Flexible (10-20 hours/week)</option>
-                        <option>Weekend only</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Experience & Skills */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Experience & Skills</h3>
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Relevant Experience</label>
-                      <Textarea
-                        name="experience"
-                        placeholder="Describe your relevant work, volunteer, or educational experience..."
-                        className="min-h-32 resize-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Skills & Expertise</label>
-                      <Textarea
-                        name="skills"
-                        placeholder="List your key skills, languages, technical abilities, etc..."
-                        className="min-h-32 resize-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Why do you want to volunteer with us?
-                      </label>
-                      <Textarea
-                        name="motivation"
-                        placeholder="Tell us about your motivation and what you hope to achieve..."
-                        className="min-h-32 resize-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {submitMessage && (
-                  <div className={`p-4 rounded-lg ${submitMessage.includes('error') ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}>
-                    {submitMessage}
-                  </div>
-                )}
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  disabled={isSubmitting}
-                  className="w-full h-16 text-xl bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 disabled:opacity-50"
-                >
-                  <Heart className="w-6 h-6 mr-2" />
-                  {isSubmitting ? "Submitting..." : "Submit Application"}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
 
       {/* Call to Action */}
       <section className="py-20 bg-gradient-to-r from-slate-800 to-gray-800 text-white">
@@ -347,7 +185,7 @@ export default function VolunteerPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg font-bold">
-              Apply Now
+              Contact Us
             </Button>
             <Button
               size="lg"
