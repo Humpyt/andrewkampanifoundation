@@ -33,24 +33,27 @@ export default function Navigation() {
       } border-b border-gray-100`}
     >
       <div className="max-w-7xl mx-auto px-6" suppressHydrationWarning={true}>
-        <div className="flex items-center justify-between h-20" suppressHydrationWarning={true}>
-          {/* Logo */}
+        {/* Desktop/Header: logo left, nav center, actions right */}
+        <div className="hidden md:grid grid-cols-[auto_1fr_auto] items-center h-28" suppressHydrationWarning={true}>
+          {/* Left: logo */}
           <Link href="/" className="group">
-            <div className="relative w-40 h-40 transition-transform duration-300 group-hover:scale-105" suppressHydrationWarning={true}>
-              <Image 
-                src="/images/logo/andrew-kampani-logo.png" 
-                alt="Andrew Kampani Foundation Logo" 
-                width={160}
-                height={160}
-                className="object-contain" 
-                style={{ width: 'auto', height: 'auto' }}
-                priority 
-              />
+            <div className="flex items-center">
+              <div className="relative w-32 h-16 transition-transform duration-300 group-hover:scale-[1.03]">
+                <Image
+                  src="/images/logo/andrew-kampani-logo.png"
+                  alt="Andrew Kampani Foundation Logo"
+                  width={180}
+                  height={90}
+                  className="object-contain"
+                  style={{ width: 'auto', height: 'auto' }}
+                  priority
+                />
+              </div>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8" suppressHydrationWarning={true}>
+          {/* Center: nav */}
+          <div className="flex items-center justify-center space-x-8">
             {navItems.map((item, index) => (
               <Link
                 key={item.name}
@@ -64,8 +67,8 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Right: CTAs */}
+          <div className="flex items-center justify-end space-x-4">
             <Button
               variant="outline"
               className="border-gray-300 text-gray-700 hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50 transition-all duration-300"
@@ -76,10 +79,25 @@ export default function Navigation() {
               <Link href="/donate">Sponsor a Girl</Link>
             </Button>
           </div>
+        </div>
 
-          {/* Mobile menu button */}
+        {/* Mobile: centered logo with menu button floating on right */}
+        <div className="md:hidden col-span-3 flex items-center justify-center relative h-24">
+          <Link href="/" className="group inline-flex items-center justify-center">
+            <div className="relative w-28 h-16 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/images/logo/andrew-kampani-logo.png"
+                alt="Andrew Kampani Foundation Logo"
+                width={160}
+                height={80}
+                className="object-contain"
+                style={{ width: 'auto', height: 'auto' }}
+                priority
+              />
+            </div>
+          </Link>
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+            className="absolute right-0 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
