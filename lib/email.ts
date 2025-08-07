@@ -30,6 +30,7 @@ export async function sendDonationEmail(data: DonationData) {
     SMTP_USER,
     SMTP_PASS,
     SMTP_FROM,
+    FROM_EMAIL,
     SMTP_TO
   } = process.env
 

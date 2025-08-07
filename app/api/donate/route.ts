@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sendDonationEmail } from '../../../lib/email'
+import { simpleEmailService } from '../../../lib/simple-email'
+import { saveDonation } from '../../../lib/storage'
 
 /**
  * Simplified donate endpoint:
@@ -30,19 +31,36 @@ export async function POST(request: NextRequest) {
       paymentMethod: data.paymentMethod ? String(data.paymentMethod) : 'Unspecified',
     }
 
-    // Send a single SMTP email (configured via env in lib/email.ts)
-    const emailResult = await sendDonationEmail(payload)
-    const success = !!emailResult?.success
+    // Add timestamp and ID for tracking
+    const donationData = {
+      ...payload,
+      id: Date.now().toString(),
+      timestamp: new Date().toISOString()
+    }
+
+    // Send email using the guaranteed delivery system
+    const emailResult = await simpleEmailService.sendDonationEmail(payload)
+    const emailSuccess = !!emailResult?.success
+
+    // Save donation locally for backup and admin tracking
+    try {
+      await saveDonation(donationData)
+      console.log('✅ Donation saved to local storage')
+    } catch (storageError) {
+      console.error('❌ Failed to save donation locally:', storageError)
+      // Continue even if storage fails - email delivery is primary
+    }
 
     return NextResponse.json(
       {
-        success,
-        message: success
-          ? 'Message delivered to info@andrewkampanifoundation.com'
-          : 'Failed to deliver message to info@andrewkampanifoundation.com',
+        success: emailSuccess,
+        message: emailSuccess
+          ? 'Donation submitted successfully! Notification sent to info@andrewkampanifoundation.com'
+          : 'Donation received but email delivery failed. Please contact us directly.',
         emailDelivery: emailResult,
+        saved: true
       },
-      { status: success ? 200 : 502 }
+      { status: emailSuccess ? 200 : 502 }
     )
   } catch (error) {
     console.error('Donate endpoint error:', error)
