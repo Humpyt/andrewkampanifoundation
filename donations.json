@@ -74,5 +74,16 @@
     "paymentMethod": "Mobile Money",
     "id": "1754550356239",
     "timestamp": "2025-08-07T07:05:56.239Z"
+  },
+  {
+    "donationType": "one-time",
+    "amount": "50000",
+    "firstName": "Test",
+    "lastName": "Donor",
+    "email": "test@example.com",
+    "phone": "+256700000000",
+    "paymentMethod": "mobile-money",
+    "id": "1754553051588",
+    "timestamp": "2025-08-07T07:50:51.588Z"
   }
 ]
